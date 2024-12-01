@@ -1,7 +1,17 @@
 <div align="center">
+
 # 購物網站
-![Static Badge](https://img.shields.io/badge/Vue-green) ![Static Badge](https://img.shields.io/badge/Vuetify-blue) ![Static Badge](https://img.shields.io/badge/Vite-green) ![Static Badge](https://img.shields.io/badge/Node-v21.6.2-blue)  ![Static Badge](https://img.shields.io/badge/pnpm-9.7.0-orange)
+
+![Static Badge](https://img.shields.io/badge/Vue-green) 
+![Static Badge](https://img.shields.io/badge/Vuetify-blue) 
+![Static Badge](https://img.shields.io/badge/Vite-green) 
+![Static Badge](https://img.shields.io/badge/Node-v21.6.2-blue)  
+![Static Badge](https://img.shields.io/badge/pnpm-9.7.0-orange)
+
 </div>
+
+## 資料夾架構
+
 
 ## 資料夾架構
  - public # 圖片放置處
