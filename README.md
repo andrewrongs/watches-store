@@ -65,8 +65,6 @@ pnpm build
 
 - `git subtree  push --prefix dist origin gh-pages` 部署 gh-pages branch
 
-### 專案呈現 (https://watches.rongs.blog/)
-
 ### 注意
 
 1. <strong>未經允許請勿發佈於相關社交平台或者部落格等網路相關平台<strong>
