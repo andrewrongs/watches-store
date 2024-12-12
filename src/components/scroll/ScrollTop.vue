@@ -49,9 +49,9 @@ export default {
 
 .scrollBtn {
   position: fixed;
-  right: 40px;
-  bottom: 40px;
-  background-color: #1d651d;
+  right: 60px;
+  bottom: 60px;
+  background-color: #a6aba6;
   border-radius: 100%;
   z-index: 1;
 }

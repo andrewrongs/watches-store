@@ -78,7 +78,7 @@ function getImageUrl(name) {
     :height="dynamicHeight"
     hide-delimiters="true"
     :cycle="true"
-    interval="1700"
+    interval="1200"
     progress="#eee"
     :show-arrows="false"
   >
@@ -156,13 +156,13 @@ export default {
     dynamicHeight() {
       switch (this.$vuetify.display.name) {
         case "xs":
-          return 300;
+          return 250;
         case "sm":
-          return 400;
+          return 350;
         case "md":
-          return 500;
+          return 450;
         default:
-          return 620;
+          return 450;
       }
     },
   },
