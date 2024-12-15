@@ -1,10 +1,17 @@
 <script setup>
-import { reactive } from "vue";
-import { onMounted, ref } from "vue";
+import { reactive, ref, computed } from "vue";
+import { onMounted } from "vue";
 import axios from "axios";
 
 const items = ref([]);
 const loading = ref(true);
+const selectedCategory = ref('metal');
+
+const categories = reactive([
+  { id: 'metal', name: '金屬' },
+  { id: 'nylon', name: '尼龍' },
+  { id: 'leather', name: '皮革' }
+]);
 
 async function fetchImg() {
   try {
@@ -68,85 +75,117 @@ const nylon = reactive([
   },
 ]);
 
+const currentItems = computed(() => {
+  switch(selectedCategory.value) {
+    case 'metal':
+      return metal;
+    case 'nylon':
+      return nylon;
+    case 'leather':
+      return leather;
+    default:
+      return metal;
+  }
+});
+
 function getImageUrl(name) {
   return `img/${name}`;
 }
 </script>
 
 <template>
-  <v-carousel
-    :height="dynamicHeight"
-    hide-delimiters="true"
-    :cycle="true"
-    interval="1200"
-    progress="#eee"
-    :show-arrows="false"
-  >
-    <v-carousel-item
-      cover
-      v-for="(item, index) in items"
-      :key="index"
-      :src="item.imagePath"
+  <div>
+    <!-- 輪播圖 -->
+    <v-carousel
+      :height="dynamicHeight"
+      hide-delimiters="false"
+      :cycle="true"
+      interval="800"
+      progress="#eee"
+      :show-arrows="false"
     >
-    </v-carousel-item>
-  </v-carousel>
-  <v-container>
-    <br />
-    <h3 class="ml-3" style="text-decoration: underline">{{ $t('Metal') }}</h3>
-    <br />
-    <v-row class="mb-10">
-      <v-col
-        v-for="(material, index) in metal"
+      <v-carousel-item
+        cover
+        v-for="(item, index) in items"
         :key="index"
-        cols="11"
-        md="3"
-        sm="4"
-        target="_blank"
-        class=""
+        :src="item.imagePath"
       >
-        <v-card class="pic">
-          <v-img :src="getImageUrl(material.imageName)"></v-img>
-          <div class="info">
-            <button class="mb-1" @click.stop="navigateToItem">View More</button>
-            <p>{{ material.description }}</p>
-          </div>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
-  <v-container>
-    <h3 class="ml-3" style="text-decoration: underline">{{ $t('Nylon') }}</h3>
-    <br />
-    <v-row class="mb-10">
-      <v-col v-for="(material, index) in nylon" :key="index" cols="11" md="3" sm="4">
-        <v-card class="pic">
-          <v-img :src="getImageUrl(material.imageName)"></v-img>
-          <div class="info">
-            <button class="mb-1" @click.stop="navigateToItem">View More</button>
-            <p>{{ material.description }}</p>
-          </div>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
-  <v-container class="mb-250">
-    <h3 class="ml-3" style="text-decoration: underline">{{ $t('Leather') }}</h3>
-    <br />
-    <v-row>
-      <v-col v-for="(material, index) in leather" :key="index" cols="11" md="3" sm="4">
-        <v-card class="pic">
-          <v-img :src="getImageUrl(material.imageName)"></v-img>
-          <div class="info">
-            <button class="mb-2" @click.stop="navigateToItem">View More</button>
-            <p>{{ material.description }}</p>
-          </div>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+      </v-carousel-item>
+    </v-carousel>
+
+
+    <v-container class="my-15">
+      <!-- 簡短介紹 -->
+      <v-row justify="center" class="text-center">
+        <v-col cols="12" md="8">
+          <h2 class="text-h4 font-weight-bold mb-6">精選系列</h2>
+          <p class="text-subtitle-1">
+            每一款腕錶都代表著我們對完美的追求，融合傳統工藝與現代設計，為您帶來獨特的時尚體驗
+          </p>
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <v-container class="mb-16 mt-12">
+      <!-- 類別選擇器 -->
+      <v-tabs
+        v-model="selectedCategory"
+        class="mt-6 mb-6"
+        color="primary"
+        grow
+      >
+        <v-tab
+          v-for="category in categories"
+          :key="category.id"
+          :value="category.id"
+          class="text-none"
+        >
+          {{ category.name }}
+        </v-tab>
+      </v-tabs>
+      <v-row>
+        <v-col
+          v-for="(item, index) in currentItems"
+          :key="index"
+          cols="12"
+          sm="6"
+          md="3"
+          class="d-flex"
+        >
+          <v-card
+            class="mx-auto product-card"
+            width="100%"
+            elevation="2"
+          >
+            <v-img
+              :src="getImageUrl(item.imageName)"
+              class="align-end"
+              height="300"
+              cover
+            >
+              <div class="overlay d-flex flex-column align-center justify-center">
+                <v-btn
+                  color="white"
+                  variant="outlined"
+                  size="small"
+                  class="mb-2"
+                  @click.stop="navigateToItem"
+                >
+                  View More
+                </v-btn>
+                <span class="text-white text-subtitle-1">{{ item.description }}</span>
+              </div>
+            </v-img>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
+
 <script>
 export default {
+  name: 'HomeMain',
   methods: {
     navigateToItem() {
       this.$router.push({ name: "ShopItem" });
@@ -168,8 +207,57 @@ export default {
   },
 };
 </script>
-<style lang="scss">
-img {
-  vertical-align: top;
+
+<style scoped>
+.product-card {
+  position: relative;
+  transition: transform 0.3s ease;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover .overlay {
+  opacity: 1;
+}
+
+.v-tabs {
+  border-radius: 8px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.v-tab {
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.v-tab--selected {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/* 針對手機版的優化 */
+@media (max-width: 600px) {
+  .product-card {
+    margin-bottom: 16px;
+  }
+  
+  .v-tabs {
+    margin-bottom: 24px;
+  }
 }
 </style>

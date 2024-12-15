@@ -1,15 +1,9 @@
 <template>
   <div>
     <br />
-    <v-breadcrumbs :items="items">
-      <template v-slot:prepend>
-        <v-icon icon="vuetify"></v-icon>
-      </template>
-    </v-breadcrumbs>
-    <br />
     <v-container>
       <v-row>
-        <v-col>
+        <v-col cols="12" sm="8" md="6" class="mx-auto">
           <v-text-field
             prepend-inner-icon="mdi-magnify"
             single-line
@@ -17,6 +11,8 @@
             hide-details
             label="搜尋商品..."
             v-model="search"
+            variant="outlined"
+            class="rounded-lg"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -26,8 +22,8 @@
         <v-col
           v-for="item in displayItem"
           :key="item.id"
-          cols="11"
-          sm="6"
+          cols="12"
+          sm="8"
           md="4"
           class="mx-auto text-center"
         >
@@ -144,4 +140,4 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+

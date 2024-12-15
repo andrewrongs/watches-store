@@ -1,13 +1,8 @@
 <template>
   <br />
-  <v-breadcrumbs :items="items">
-    <template v-slot:prepend>
-      <v-icon icon="vuetify"></v-icon>
-    </template>
-  </v-breadcrumbs>
   <v-container>
-    <v-row class="box-container">
-      <v-col cols="12" md="6" class="img-container">
+    <v-row class="box-container mb-5">
+      <v-col cols="12" md="6" class="">
         <v-img :src="product.img"></v-img>
       </v-col>
       <v-col cols="12" md="6" class="mt-6">
@@ -69,23 +64,6 @@ export default {
       count: 1,
       snackbar: false,
       snackbarText: "",
-      items: [
-        {
-          title: "首頁",
-          disabled: false,
-          href: "",
-        },
-        {
-          title: "商品",
-          disabled: true,
-          href: "",
-        },
-        {
-          title: "Zxc 水行俠獨裁者",
-          disabled: true,
-          href: "",
-        },
-      ],
       product: {
         id: 999,
         title: "【藍水晶】Zxc 水行俠獨裁者",

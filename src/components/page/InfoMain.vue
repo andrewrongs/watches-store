@@ -1,56 +1,57 @@
 <template>
-  <br />
-  <v-breadcrumbs :items="items">
-    <template v-slot:prepend>
-      <v-icon icon="vuetify"></v-icon>
-    </template>
-  </v-breadcrumbs>
-  <v-container class="mb-250">
-    <v-row class="box-container">
-      <v-col cols="12" md="6" class="img-container pa-5" data-aos="flip-up">
-        <v-img src="/img/InfoImg.webp"></v-img>
-      </v-col>
-      <v-col cols="12" md="6">
-        <v-card
-          data-aos="flip-up"
-          data-aos-duration="1000"
-          style="background: linear-gradient(to right, #e2e2e2, #e3ede7)"
-        >
-          <v-card-title>店內資訊</v-card-title>
-          <br />
-          <v-card-text>地址：台中市南區XXXXXXXX</v-card-text>
-          <v-card-text>聯絡電話：03-3333333</v-card-text>
-          <v-card-text>電子郵件：info@example.com</v-card-text>
-          <hr class="mb-20" />
-          <v-card-title>營業時間</v-card-title>
-          <br />
-          <v-card-text>周一至周五: 9:00 AM - 6:00 PM</v-card-text>
-          <v-card-text> 周六至周日: 10:00 AM - 4:00 PM</v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div>
+    <v-container class="mb-16 mt-16">
+      <v-row align="center">
+        <v-col cols="12" md="6">
+          <v-img src="/img/InfoImg1.jpg" class="rounded-lg" height="500" cover></v-img>
+        </v-col>
+        <v-col cols="12" md="6">
+          <div class="info-content pa-6">
+            <h2 class="text-h4 mb-8">Our Story Is Your Story</h2>
+            <p class="text-body-1 mb-6">
+              Founded in 1980, We are advocates for individuality. At the core of our brand, we seek to inspire, continually exploring new ways to build upon our collaborative community and provide a platform to share the stories of passionate creators.
+            </p>
+            <p class="text-body-1 mb-8">
+              Each timepiece is designed to be cherished—to collect stories, to live a long life, and to be rediscovered season after season. With a vision anchored in self-expression, we aim to form inclusive collections.
+            </p>
+            <v-btn color="primary" variant="outlined" size="large">
+              SHOP NOW
+            </v-btn>
+          </div>
+        </v-col>
+      </v-row>
+    </v-container>
+
+    <v-container class="mb-16">
+      <v-row align="center">
+        <v-col cols="12" md="6">
+          <div class="info-content pa-6">
+            <h2 class="text-h4 mb-8">We are a lifestyle brand</h2>
+            <p class="text-body-1 mb-6">
+              We believe that a watch is more than just a timepiece – it's a statement of personal style and a companion in life's journey. Our commitment to quality craftsmanship and innovative design has made us a trusted name in the industry.
+            </p>
+            <p class="text-body-1 mb-6">
+              Every detail of our watches is carefully considered, from the selection of premium materials to the precision of our movements. We combine traditional watchmaking expertise with contemporary aesthetics to create timepieces that are both functional and beautiful.
+            </p>
+            <p class="text-body-1 mb-8">
+              Join us in celebrating the art of timekeeping and discover a watch that reflects your unique story.
+            </p>
+            <v-btn color="primary" variant="outlined" size="large">
+              EXPLORE MORE
+            </v-btn>
+          </div>
+        </v-col>
+
+        <v-col cols="12" md="6">
+          <v-img src="/img/InfoImg2.jpg" class="rounded-lg" height="500" cover></v-img>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
 
 <script>
 export default {
   name: "InfoMain",
-  data() {
-    return {
-      items: [
-        {
-          title: this.$t('Home'),
-          disabled: false,
-          href: "",
-        },
-        {
-          title: this.$t('StoreInfomation'),
-          disabled: true,
-          href: "",
-        },
-      ],
-    };
-  },
-  computed: {},
 };
 </script>

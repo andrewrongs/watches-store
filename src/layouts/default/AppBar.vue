@@ -4,10 +4,10 @@
         <v-app-bar-nav-icon class="d-md-none" variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
         <!--大尺寸菜單-->
-        <v-app-bar-title class="mr-10"><a href="#" to="/Home"
+        <v-app-bar-title class=""><a href="#" to="/Home"
                 style="color: #eee; text-decoration-line: none">Henlex's</a>
         </v-app-bar-title>
-        <v-row class="d-none d-md-flex justify-xl-center align-center flex-grow-1">
+        <v-row class="d-none d-md-flex justify-xl-start align-center flex-grow-1">
             <v-btn color="block" variant="text" class="mx-2" rounded="xl" to="/storeInfo">{{
                 $t("StoreInfomation")
             }}</v-btn>

@@ -1,15 +1,20 @@
-.left {
-  margin-left: 45px;
+.info-content {
+  background: linear-gradient(to right, rgba(226, 226, 226, 0.3), rgba(227, 237, 231, 0.3));
+  border-radius: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.box-container {
-  padding-top: 30px;
+
+.text-body-1 {
+  line-height: 1.8;
+  color: #424242;
 }
-.img-container {
-  width: 100%;
-  padding-bottom: 80px;
-}
-.mb-20 {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #e3ede7;
+
+@media (max-width: 960px) {
+  .info-content {
+    margin-top: 2rem;
+    padding: 2rem !important;
+  }
 }
