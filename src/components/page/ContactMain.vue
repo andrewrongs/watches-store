@@ -21,12 +21,12 @@
                 <v-row>
                     <v-col cols="12" md="5">
                         <v-autocomplete v-model="selected" :items="contactItems" chips hide-details hide-no-data
-                            hide-selected :label="$t('Question')" :multiple="false" single-line
+                            hide-selected :label="$t('Question')" :multiple="false" single-line 
                             class="mb-4"></v-autocomplete>
-                        <v-text-field v-model="email" :label="$t('Please enter your Email')" variant="outlined"
-                            class="mb-4"></v-text-field>
+                        <v-text-field v-model="email" :label="$t('Please enter your Email')"  :rules="emailRules" variant="outlined"
+                            class="mb-4" ></v-text-field>
 
-                        <v-text-field v-model="phone" :label="$t('Please enter your phone')" variant="outlined"
+                        <v-text-field v-model="phone" :label="$t('Please enter your phone')" :rules="phoneRules" variant="outlined"
                             class="mb-4"></v-text-field>
                     </v-col>
                     <v-col cols="12" md="7">
@@ -52,8 +52,8 @@ export default {
     data() {
         return {
             selected: this.$t("Question"),
-            subject: "",
-            title: "",
+            email: "",
+            phone: "",
             message: "",
             contactItems: [
                 this.$t("ReturnOrexchange"),
@@ -90,7 +90,7 @@ export default {
     },
     methods: {
         submitForm() {
-            if (!this.subject || !this.title || !this.selected) {
+            if (!this.subject || !this.email || !this.phone) {
                 alert("請選擇問題,並填寫標題與訊息");
             } else {
                 alert("已送出您的問題 將在24小時為您解答");
@@ -102,7 +102,21 @@ export default {
             this.subject = "";
             this.title = "";
             this.message = "";
-        },
+        }
     },
+    computed:{
+        emailRules(){
+            return [
+                (v) => !!v || "Email必須填寫",
+                (v) => /.+@.+\..+/.test(v) || "請輸入有效格式",
+            ];
+        },
+        phoneRules(){
+            return [
+                (v) => !!v || "手機號必須填寫",
+                (v) => /^09\d{8}$/.test(v) || "請輸入有效格式",
+            ];
+        }
+    }
 };
 </script>
